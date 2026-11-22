@@ -54,6 +54,16 @@ app.add_middleware(
 
 MAX_BYTES = 2 * 1024 * 1024 # 2 MB limit
 
+@app.get('/')
+def root():
+    return {
+        'service': 'SentinelAI Threat Intelligence Engine',
+        'status': 'online',
+        'version': '1.0.0',
+        'health_check': '/health',
+        'api_docs': '/docs'
+    }
+
 @app.get('/health')
 def health():
     _, metrics = get_model()
