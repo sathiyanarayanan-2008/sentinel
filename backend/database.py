@@ -10,6 +10,13 @@ import threading
 from datetime import datetime, timezone
 from typing import Optional, List, Dict, Any
 
+try:
+    from dotenv import load_dotenv
+    load_dotenv(os.path.join(os.path.dirname(__file__), '.env'))
+    load_dotenv()
+except Exception:
+    pass
+
 DB_FALLBACK_FILE = os.path.join(os.path.dirname(__file__), 'data', 'incidents.json')
 
 class IncidentRepository:
