@@ -42,7 +42,7 @@ import {
 } from 'recharts';
 import './style.css';
 
-const API = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const API = import.meta.env.VITE_API_URL || (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1' ? 'https://sentinel-mq32.onrender.com' : 'http://localhost:8000');
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('overview');
